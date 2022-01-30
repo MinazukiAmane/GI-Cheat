@@ -270,48 +270,6 @@ dealloc(*)
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
-          <ID>0</ID>
-          <Description>"No CD Skill"</Description>
-          <LastState/>
-          <Color>0080FF</Color>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>{  Game Executable   : GenshinImpact.exe
-   Executable Version: 2017.4.30.0
-   Script Date       : 2022-01-05
-   Author            : Amane
-}
-
-[ENABLE]
-aobscanmodule(skillx,UserAssembly.dll,0F 11 43 ?? 0F 28 7C 24 ?? 48 8B 74 24) // should be unique
-alloc(r_skillx,4,skillx)
-r_skillx:
-readmem(skillx,4)
-skillx:
-db 90 90 90 90
-registersymbol(skillx)
-registersymbol(r_skillx)
-aobscanmodule(skillxx,UserAssembly.dll,0F 10 70 ?? F6 81 ?? ?? ?? ?? ?? 74 ?? 83 B9 ?? ?? ?? ?? ?? 75 ?? E8 ?? ?? ?? ?? 45 33 C0 66 0F 7F 74 24 ?? 48 8D 54 24 ?? 33 C9 E8 ?? ?? ?? ?? 33 D2 48 8B CB 0F 28 F0 E8 ?? ?? ?? ?? 48 85 C0 74) // should be unique
-alloc(r_skillxx,4,skillxx)
-r_skillxx:
-readmem(skillxx,4)
-skillxx:
-db 90 90 90 90
-registersymbol(skillxx)
-registersymbol(r_skillxx)
-[DISABLE]
-skillx:
-readmem(r_skillx,4)
-unregistersymbol(skillx)
-unregistersymbol(r_skillx)
-dealloc(r_skillx)
-skillxx:
-readmem(r_skillxx,4)
-unregistersymbol(skillxx)
-unregistersymbol(r_skillxx)
-dealloc(r_skillxx)
-</AssemblerScript>
-        </CheatEntry>
-        <CheatEntry>
           <ID>38</ID>
           <Description>"Stamina tak terbatas"</Description>
           <LastState/>
@@ -390,6 +348,48 @@ aodoubleatk:
 readmem(resdoubleatk,6)
 unregistersymbol(*)
 dealloc(*)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>0</ID>
+          <Description>"No CD Skill"</Description>
+          <LastState/>
+          <Color>00000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{  Game Executable   : GenshinImpact.exe
+   Executable Version: 2017.4.30.0
+   Script Date       : 2022-01-05
+   Author            : Amane
+}
+
+[ENABLE]
+aobscanmodule(skillx,UserAssembly.dll,0F 11 43 ?? 0F 28 7C 24 ?? 48 8B 74 24) // should be unique
+alloc(r_skillx,4,skillx)
+r_skillx:
+readmem(skillx,4)
+skillx:
+db 90 90 90 90
+registersymbol(skillx)
+registersymbol(r_skillx)
+aobscanmodule(skillxx,UserAssembly.dll,0F 10 70 ?? F6 81 ?? ?? ?? ?? ?? 74 ?? 83 B9 ?? ?? ?? ?? ?? 75 ?? E8 ?? ?? ?? ?? 45 33 C0 66 0F 7F 74 24 ?? 48 8D 54 24 ?? 33 C9 E8 ?? ?? ?? ?? 33 D2 48 8B CB 0F 28 F0 E8 ?? ?? ?? ?? 48 85 C0 74) // should be unique
+alloc(r_skillxx,4,skillxx)
+r_skillxx:
+readmem(skillxx,4)
+skillxx:
+db 90 90 90 90
+registersymbol(skillxx)
+registersymbol(r_skillxx)
+[DISABLE]
+skillx:
+readmem(r_skillx,4)
+unregistersymbol(skillx)
+unregistersymbol(r_skillx)
+dealloc(r_skillx)
+skillxx:
+readmem(r_skillxx,4)
+unregistersymbol(skillxx)
+unregistersymbol(r_skillxx)
+dealloc(r_skillxx)
 </AssemblerScript>
             </CheatEntry>
             <CheatEntry>
