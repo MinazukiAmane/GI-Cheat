@@ -411,7 +411,7 @@ dealloc(*)
         <CheatEntry>
           <ID>0</ID>
           <Description>"No CD Skill"</Description>
-          <Color>0080FF</Color>
+          <Color>0000FF</Color>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{  Game Executable   : GenshinImpact.exe
    Executable Version: 2017.4.30.0
