@@ -3,22 +3,22 @@
   <CheatEntries>
     <CheatEntry>
       <ID>30</ID>
-      <Description>"Genshin Impact 2.5"</Description>
+      <Description>"Genshin Impact 2.5 Cheat List"</Description>
       <Options moHideChildren="1" moDeactivateChildrenAsWell="1"/>
       <Color>FF0080</Color>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
 {$lua}
 if getCEVersion() &lt; 7.4 then
-showMessage('Cheat Engine 7.4 Required')
-error('Cheat Engine 7.4 needed')
+showMessage('Mebutuhkan Cheat Engine 7.4')
+error('Membutuhkan Cheat Engine 7.4')
 end
 if syntaxcheck then return end
 if process and readInteger(process) ~= 0 then
     mono_initialize()
     LaunchMonoDataCollector()
 else
-    local msg = 'No process GenshinImpact.exe detected.'
+    local msg = 'Tidak ada proses GenshinImpact.exe yang terdeteksi.'
     print(msg)
     error(msg)
 end
@@ -29,18 +29,18 @@ LuaCall(function cycleFullCompact(sender,force) local state = not(compactmenuite
       <CheatEntries>
         <CheatEntry>
           <ID>46</ID>
-          <Description>"--- Info: Red=High Risk | Orange=Medium Risk | Green=Low Risk ---"</Description>
+          <Description>"--- Info Script: Merah=Beresiko Tinggi | Orange=Beresiko Sedang | Hijau=Beresiko Kecil ---"</Description>
           <GroupHeader>1</GroupHeader>
         </CheatEntry>
         <CheatEntry>
           <ID>8</ID>
-          <Description>"God Mode"</Description>
+          <Description>"Mode Dewa"</Description>
           <Color>009700</Color>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{  Game Executable   : GenshinImpact.exe
    Executable Version: 2017.4.30.0
    Script Date       : 2022-02-18
-   Author            : AlvinC
+   Author            : Amane
 }
 
 [ENABLE]
@@ -89,40 +89,14 @@ dealloc(*)
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
-          <ID>47</ID>
-          <Description>"Dumb Enemy"</Description>
-          <Color>009700</Color>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>{  Game Executable   : GenshinImpact.exe
-   Executable Version: 2017.4.30.0
-   Script Date       : 2022-02-18
-   Author            : AlvinC
-}
-
-[ENABLE]
-aobscanmodule(aoinvicibility,UserAssembly.dll,74 66 48 8B 8B 18 01 00 00)
-alloc(resinvicibility,8)
-resinvicibility:
-readmem(aoinvicibility,1)
-aoinvicibility:
-db 75
-registersymbol(aoinvicibility resinvicibility)
-[DISABLE]
-aoinvicibility:
-readmem(resinvicibility,1)
-unregistersymbol(*)
-dealloc(*)
-</AssemblerScript>
-        </CheatEntry>
-        <CheatEntry>
           <ID>6</ID>
-          <Description>"Chest Esp"</Description>
+          <Description>"Mark Chest"</Description>
           <Color>009700</Color>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{  Game Executable   : GenshinImpact.exe
    Executable Version: 2017.4.30.0
    Script Date       : 2022-02-18
-   Author            : AlvinC
+   Author            : Amane
 }
 
 [ENABLE]
@@ -160,13 +134,13 @@ dealloc(*)
         </CheatEntry>
         <CheatEntry>
           <ID>11</ID>
-          <Description>"Monster Esp"</Description>
+          <Description>"Mark Monster"</Description>
           <Color>009700</Color>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{  Game Executable   : GenshinImpact.exe
    Executable Version: 2017.4.30.0
    Script Date       : 2022-02-18
-   Author            : AlvinC
+   Author            : Amane
 }
 
 [ENABLE]
@@ -201,7 +175,7 @@ dealloc(*)
           <AssemblerScript>{  Game Executable   : GenshinImpact.exe
    Executable Version: 2017.4.30.0
    Script Date       : 2022-02-18
-   Author            : AlvinC
+   Author            : Amane
 }
 
 [ENABLE]
@@ -227,7 +201,7 @@ dealloc(*)
           <AssemblerScript>{  Game Executable   : GenshinImpact.exe
    Executable Version: 2017.4.30.0
    Script Date       : 2022-02-18
-   Author            : AlvinC
+   Author            : Amane
 }
 
 [ENABLE]
@@ -254,13 +228,13 @@ dealloc(*)
         </CheatEntry>
         <CheatEntry>
           <ID>7</ID>
-          <Description>"Fly Hack"</Description>
+          <Description>"Mode Terbang"</Description>
           <Color>0080FF</Color>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{  Game Executable   : GenshinImpact.exe
    Executable Version: 2017.4.30.0
    Script Date       : 2022-02-18
-   Author            : AlvinC
+   Author            : Amane
 }
 
 [ENABLE]
@@ -288,14 +262,161 @@ dealloc(*)
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
-          <ID>0</ID>
-          <Description>"No Skill CD"</Description>
+          <ID>38</ID>
+          <Description>"Stamina Tak Terbatas"</Description>
           <Color>0080FF</Color>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{  Game Executable   : GenshinImpact.exe
    Executable Version: 2017.4.30.0
    Script Date       : 2022-02-18
-   Author            : AlvinC
+   Author            : Amane
+}
+
+[ENABLE]
+aobscanmodule(aostamina,UserAssembly.dll,0F 11 04 C1 FF 43 50 48 81 C4 98 00 00 00 41 5E 5E 5D 5B C3 E8 DB)
+alloc(nstamina,$1000,aostamina)
+label(rstamina)
+label(resstamina)
+nstamina:
+cmp rdi,271B
+jne @f
+movups xmm0,[rcx+rax*8]
+jmp resstamina
+@@:
+resstamina:
+readmem(aostamina,7)
+jmp rstamina
+aostamina:
+jmp nstamina
+nop 2
+rstamina:
+registersymbol(aostamina resstamina)
+[DISABLE]
+aostamina:
+readmem(resstamina,7)
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>44</ID>
+          <Description>"Karakter Hack Kecepatan"</Description>
+          <Options moDeactivateChildrenAsWell="1"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>45</ID>
+              <Description>"Attack"</Description>
+              <Color>0080FF</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{  Game Executable   : GenshinImpact.exe
+   Executable Version: 2017.4.30.0
+   Script Date       : 2022-02-18
+   Author            : Amane
+}
+
+[ENABLE]
+aobscanmodule(aodoubleatk,UnityPlayer.dll,8B 47 ? 89 47 ? 8B 47 ? 89 47 ? 8B 47 ? 89 47 ? 66 C7 47)
+alloc(resdoubleatk,8)
+resdoubleatk:
+readmem(aodoubleatk,6)
+aodoubleatk:
+db 10 47 30 89 47 2C
+registersymbol(aodoubleatk resdoubleatk)
+[DISABLE]
+aodoubleatk:
+readmem(resdoubleatk,6)
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2</ID>
+              <Description>"Gerakan"</Description>
+              <Options moHideChildren="1"/>
+              <Color>0000FF</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{  Game Executable   : GenshinImpact.exe
+   Executable Version: 2017.4.30.0
+   Script Date       : 2022-02-18
+   Author            : Amane
+}
+
+[ENABLE]
+aobscanmodule(aomovspeed,UnityPlayer.dll,42 89 ? ? ? B8 ? ? ? ? 48 83 C4 ? 5F C3 CC CC CC CC CC CC CC CC CC CC CC CC CC)
+alloc(nmovspeed,$1000,aomovspeed)
+label(rmovspeed)
+label(resmovspeed)
+label(lmovspeed)
+nmovspeed:
+cmp rdx,108
+jne resmovspeed
+mov eax,[lmovspeed]
+resmovspeed:
+readmem(aomovspeed,5)
+jmp rmovspeed
+lmovspeed:
+dd (float)1
+aomovspeed:
+jmp nmovspeed
+rmovspeed:
+registersymbol(aomovspeed resmovspeed lmovspeed)
+[DISABLE]
+aomovspeed:
+readmem(resmovspeed,5)
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>3</ID>
+                  <Description>"Gerakan (Ubah Karakter Untuk Melihat Efek)"</Description>
+                  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">1:Normal
+2:x2
+</DropDownList>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Float</VariableType>
+                  <Address>lmovspeed</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>12</ID>
+          <Description>"No Charge Bow"</Description>
+          <Color>0000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{  Game Executable   : GenshinImpact.exe
+   Executable Version: 2017.4.30.0
+   Script Date       : 2022-02-18
+   Author            : Amane
+}
+
+[ENABLE]
+aobscanmodule(aobowinstant,UserAssembly.dll,0F 11 ? ? 48 85 ? 0F 84 ? ? ? ? 48 8B ? ? 4C 8D ? ? ? 0F 10)
+alloc(resbowinstant,8)
+resbowinstant:
+readmem(aobowinstant,4)
+aobowinstant:
+db 90 90 90 90
+registersymbol(aobowinstant resbowinstant)
+[DISABLE]
+aobowinstant:
+readmem(resbowinstant,4)
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>0</ID>
+          <Description>"No CD Skill"</Description>
+          <Color>0080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{  Game Executable   : GenshinImpact.exe
+   Executable Version: 2017.4.30.0
+   Script Date       : 2022-02-18
+   Author            : Amane
 }
 
 [ENABLE]
@@ -329,161 +450,14 @@ dealloc(r_skillxx)
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
-          <ID>38</ID>
-          <Description>"Unlimited Stamina"</Description>
-          <Color>0080FF</Color>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>{  Game Executable   : GenshinImpact.exe
-   Executable Version: 2017.4.30.0
-   Script Date       : 2022-02-18
-   Author            : AlvinC
-}
-
-[ENABLE]
-aobscanmodule(aostamina,UserAssembly.dll,0F 11 04 C1 FF 43 50 48 81 C4 98 00 00 00 41 5E 5E 5D 5B C3 E8 DB)
-alloc(nstamina,$1000,aostamina)
-label(rstamina)
-label(resstamina)
-nstamina:
-cmp rdi,271B
-jne @f
-movups xmm0,[rcx+rax*8]
-jmp resstamina
-@@:
-resstamina:
-readmem(aostamina,7)
-jmp rstamina
-aostamina:
-jmp nstamina
-nop 2
-rstamina:
-registersymbol(aostamina resstamina)
-[DISABLE]
-aostamina:
-readmem(resstamina,7)
-unregistersymbol(*)
-dealloc(*)
-</AssemblerScript>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>44</ID>
-          <Description>"Character Speedhack"</Description>
-          <Options moDeactivateChildrenAsWell="1"/>
-          <GroupHeader>1</GroupHeader>
-          <CheatEntries>
-            <CheatEntry>
-              <ID>45</ID>
-              <Description>"Attack"</Description>
-              <Color>0080FF</Color>
-              <VariableType>Auto Assembler Script</VariableType>
-              <AssemblerScript>{  Game Executable   : GenshinImpact.exe
-   Executable Version: 2017.4.30.0
-   Script Date       : 2022-02-18
-   Author            : AlvinC
-}
-
-[ENABLE]
-aobscanmodule(aodoubleatk,UnityPlayer.dll,8B 47 ? 89 47 ? 8B 47 ? 89 47 ? 8B 47 ? 89 47 ? 66 C7 47)
-alloc(resdoubleatk,8)
-resdoubleatk:
-readmem(aodoubleatk,6)
-aodoubleatk:
-db 10 47 30 89 47 2C
-registersymbol(aodoubleatk resdoubleatk)
-[DISABLE]
-aodoubleatk:
-readmem(resdoubleatk,6)
-unregistersymbol(*)
-dealloc(*)
-</AssemblerScript>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>2</ID>
-              <Description>"Movement"</Description>
-              <Options moHideChildren="1"/>
-              <Color>0000FF</Color>
-              <VariableType>Auto Assembler Script</VariableType>
-              <AssemblerScript>{  Game Executable   : GenshinImpact.exe
-   Executable Version: 2017.4.30.0
-   Script Date       : 2022-02-18
-   Author            : AlvinC
-}
-
-[ENABLE]
-aobscanmodule(aomovspeed,UnityPlayer.dll,42 89 ? ? ? B8 ? ? ? ? 48 83 C4 ? 5F C3 CC CC CC CC CC CC CC CC CC CC CC CC CC)
-alloc(nmovspeed,$1000,aomovspeed)
-label(rmovspeed)
-label(resmovspeed)
-label(lmovspeed)
-nmovspeed:
-cmp rdx,108
-jne resmovspeed
-mov eax,[lmovspeed]
-resmovspeed:
-readmem(aomovspeed,5)
-jmp rmovspeed
-lmovspeed:
-dd (float)1
-aomovspeed:
-jmp nmovspeed
-rmovspeed:
-registersymbol(aomovspeed resmovspeed lmovspeed)
-[DISABLE]
-aomovspeed:
-readmem(resmovspeed,5)
-unregistersymbol(*)
-dealloc(*)
-</AssemblerScript>
-              <CheatEntries>
-                <CheatEntry>
-                  <ID>3</ID>
-                  <Description>"Movement (switch character to see the effect)"</Description>
-                  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">1:Normal
-2:x2
-</DropDownList>
-                  <ShowAsSigned>0</ShowAsSigned>
-                  <VariableType>Float</VariableType>
-                  <Address>lmovspeed</Address>
-                </CheatEntry>
-              </CheatEntries>
-            </CheatEntry>
-          </CheatEntries>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>12</ID>
-          <Description>"Instant Bow Charge"</Description>
-          <Color>0000FF</Color>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>{  Game Executable   : GenshinImpact.exe
-   Executable Version: 2017.4.30.0
-   Script Date       : 2022-02-18
-   Author            : AlvinC
-}
-
-[ENABLE]
-aobscanmodule(aobowinstant,UserAssembly.dll,0F 11 ? ? 48 85 ? 0F 84 ? ? ? ? 48 8B ? ? 4C 8D ? ? ? 0F 10)
-alloc(resbowinstant,8)
-resbowinstant:
-readmem(aobowinstant,4)
-aobowinstant:
-db 90 90 90 90
-registersymbol(aobowinstant resbowinstant)
-[DISABLE]
-aobowinstant:
-readmem(resbowinstant,4)
-unregistersymbol(*)
-dealloc(*)
-</AssemblerScript>
-        </CheatEntry>
-        <CheatEntry>
           <ID>39</ID>
-          <Description>"Pick Up Range (40m)"</Description>
+          <Description>"Jangkauan Pengambilan (40m)"</Description>
           <Color>0000FF</Color>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{  Game Executable   : GenshinImpact.exe
    Executable Version: 2017.4.30.0
    Script Date       : 2022-02-18
-   Author            : AlvinC
+   Author            : Amane
 }
 
 [ENABLE]
@@ -513,13 +487,13 @@ dealloc(*)
         </CheatEntry>
         <CheatEntry>
           <ID>43</ID>
-          <Description>"Auto Range Kill (open world only)"</Description>
+          <Description>"Auto Kill jarak jauh (Hanya Dunia Terbuka)"</Description>
           <Color>0000FF</Color>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{  Game Executable   : GenshinImpact.exe
    Executable Version: 2017.4.30.0
    Script Date       : 2022-02-18
-   Author            : AlvinC
+   Author            : Amane
 }
 
 [ENABLE]
@@ -551,20 +525,20 @@ dealloc(*)
         </CheatEntry>
         <CheatEntry>
           <ID>1</ID>
-          <Description>"Damage Hack (for certain chara only)"</Description>
+          <Description>"Hack Kerusakan (Hanya Untuk Charater tertentu)"</Description>
           <Options moDeactivateChildrenAsWell="1"/>
           <Color>0000FF</Color>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{  Game Executable   : GenshinImpact.exe
    Executable Version: 2017.4.30.0
    Script Date       : 2022-02-18
-   Author            : AlvinC
+   Author            : Amane
 }
 
 [ENABLE]
 aobscanmodule(aostats,UserAssembly.dll,F3 0F ? ? ? F3 0F ? ? 48 8B ? ? ? ? ? ? F3 0F)
-alloc(nstats,$1000,aostats)
-alloc(set_stats,$4)
+alloc(nstats,$1000000,aostats)
+alloc(set_stats,$4000)
 label(rstats)
 label(resstats)
 set_stats:
@@ -579,8 +553,8 @@ jmp nstats
 rstats:
 registersymbol(aostats resstats set_stats)
 aobscanmodule(aodmgmul,UserAssembly.dll,06 F3 0F ? ? 48 83 C4 ? 5B C3 49 8B ? E8 ? ? ? ? CC E8 ? ? ? ? CC CC CC CC CC CC CC CC CC CC 48 89)
-alloc(ndmgmul,$1000,aodmgmul)
-alloc(set_damage,$32)
+alloc(ndmgmul,$1000000,aodmgmul)
+alloc(set_damage,$32000)
 label(rdmgmul)
 label(resdmgmul)
 set_damage:
@@ -613,7 +587,7 @@ dealloc(*)
           <CheatEntries>
             <CheatEntry>
               <ID>158</ID>
-              <Description>"&lt;&lt;&lt;Click for Information"</Description>
+              <Description>"&lt;&lt;&lt;Klik Untuk Informasi Tambahan"</Description>
               <Color>FF0080</Color>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>[enable]
@@ -625,14 +599,14 @@ getMainForm().CommentButton.doClick()
             </CheatEntry>
             <CheatEntry>
               <ID>33</ID>
-              <Description>"Stats Multiple"</Description>
+              <Description>"Status Ganda"</Description>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>set_stats</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>34</ID>
-              <Description>"Attack Multiple"</Description>
+              <Description>"Kerusakan Ganda"</Description>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>set_damage</Address>
@@ -643,23 +617,23 @@ getMainForm().CommentButton.doClick()
     </CheatEntry>
   </CheatEntries>
   <UserdefinedSymbols/>
-  <Comments>Big credit to galpt for the dmg scripts and its information.
---- Recommended chara list to use "damage multiply" with ---
-• Raiden blade atk (requires her Q skill)
+  <Comments>Big credit to rafel untuk informasinya.
+--- Daftar chara yang direkomendasikan untuk menggunakan "kerusakan berlipat ganda" dengan ---
+• Raiden blade atk (membutuhkan skill Q-nya)
 • Diluc Q
-• Thoma normal &amp; charge atk (requires his Q skill)
+• Thoma normal &amp; charge atk (membutuhkan skill Q-nya)
 • Mona charge atk
-• Hutao charge atk (requires her E skill bloom)
-• Amber All Skill Set
-• Tabibito/Traveler hold E skill (Anemo)
-• Eula Q (wait until her floating blade blows up)
-• Eula Q + Lisa Q combined (elemental reaction)
-• Shenhe E skill (without holding)
-• Needs more tests...
---- Recommended chara list to use "stats multiply" with ---
-• Characters with shield skill (Diona, Noelle, Thoma, etc.)
-• Characters with stats buff (Hu Tao, Bennett, etc.)
-• Characters with durational E/Q (Raiden, Hu Tao, etc.)
-• Needs more tests...
+• Hutao charge atk (membutuhkan keterampilan E-nya dan bloom)
+• Amber Semua skill
+• Tabibito/Traveler tahan skill E (Anemo)
+• Eula Q (tunggu sampai pedang apungnya meledak)
+• Eula Q + Lisa Q digabung (reaksi elemental)
+• Shenhe E skill (tanpa harus ditekan)
+• Perlu lebih banyak tes...
+--- Daftar chara yang direkomendasikan untuk menggunakan "status ganda" dengan ---
+• Karakter dengan skill perisai (Diona, Noelle, Thoma, dll.)
+• Karakter dengan status Buff (Hu Tao, Bennett, dll.)
+• Karakter dengan Durasi E/Q (Raiden, Hu Tao, dll.)
+• Perlu lebih banyak tes...
 </Comments>
 </CheatTable>
